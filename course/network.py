@@ -148,3 +148,13 @@ def pairwise_intersection(d: List, attribute: str, identifier: str):
     return ({'from': d[i][identifier], 'to': d[j][identifier]} for i,j in pairs if overlap(i,j))
 
 
+def from_excel_files(nodes_file, edges_file):
+    
+    df_V = pd.read_excel(nodes_file)
+    df_E = pd.read_excel(edges_file)
+
+    V = df_V.to_dict('records')
+    E = df_E.to_dict('records')
+
+    return V, E
+
